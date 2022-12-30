@@ -5,12 +5,7 @@ const fs = require("fs");
 require("dotenv").config()
 const PORT = process.env.PORT || 4040;
 
-app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html");
-})
-app.get("/index.css", (req, res) => {
-    res.sendFile(__dirname + "/index.css")
-})
+app.use(express.static(__dirname + "/public"))
 
 app.get("/video", (req, res) => {
     const range = req.headers.range;
